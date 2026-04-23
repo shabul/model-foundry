@@ -1,0 +1,23 @@
+model: "Qwen/Qwen2.5-3B-Instruct"
+train: true
+data: foundry/feynman-explainer/data/
+
+# Higher rank for style transfer — needs more expressive capacity than fact learning
+lora_layers: 16
+lora_parameters:
+  rank: 16
+  alpha: 32
+  dropout: 0.05
+  scale: 10.0
+
+# Training hyperparameters — tuned for M5 Mac (24 GB)
+batch_size: 2
+iters: 1500
+learning_rate: 2e-4
+
+# Reporting and checkpointing
+steps_per_report: 50
+steps_per_eval: 200
+save_every: 500
+adapter_path: foundry/feynman-explainer/adapters/
+max_seq_length: 1024
