@@ -12,7 +12,7 @@ built on Apple Silicon using [MLX](https://github.com/ml-explore/mlx).
 ## Models
 
 | Project | Base Model | Dataset | HF Repo | Notes | Val Loss |
-|---|---|---|---|---|
+|---|---|---|---|---|---|
 | [qwen2.5-dolly](foundry/qwen2.5-dolly/) | Qwen2.5-3B-Instruct | Dolly-15k | [shabul/qwen2.5-3b-dolly-finetuned](https://huggingface.co/shabul/qwen2.5-3b-dolly-finetuned) | General instruction tuning | 1.446 |
 | [feynman-explainer](foundry/feynman-explainer/) | Qwen2.5-3B-Instruct | [shabul/feynman-explainer-dataset](https://huggingface.co/datasets/shabul/feynman-explainer-dataset) | [shabul/qwen2.5-3b-feynman-explainer](https://huggingface.co/shabul/qwen2.5-3b-feynman-explainer) | [Space](https://huggingface.co/spaces/shabul/feynman-explainer) for analogy-first explanations | n/a |
 
