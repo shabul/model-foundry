@@ -13,6 +13,9 @@ model selection through HF Hub deployment. All projects live under `foundry/`.
 | `/finetune data <project-name>` | Prepare and format the dataset to JSONL |
 | `/finetune train <project-name>` | Run LoRA training via mlx-lm |
 | `/finetune eval <project-name>` | Run quick inference to sanity-check the adapter |
+| `/finetune score <project-name>` | Full style-metric evaluation — base vs fine-tuned, saves report |
+| `/finetune retrain <project-name> <hf-repo>` | Retrain with escalated params, push to versioned repo |
+| `/finetune compare <project-name>` | Side-by-side diff of all eval report versions |
 | `/finetune push <project-name> <hf-repo>` | Fuse adapters and push to HF Hub |
 | `/finetune card <project-name>` | Generate a model card from training stats |
 | `/finetune status` | Show all projects and their current state |
@@ -150,6 +153,62 @@ Steps:
    - Section: Author — "Shabul Abdul, Sr. Data Scientist"
    - Footer: hardware note ("trained on Apple Silicon, no cloud GPUs")
 4. Upload to HF Hub if repo already exists
+
+---
+
+## `/finetune score <project-name>`
+
+Full quantitative evaluation — base model vs fine-tuned, across held-out prompts.
+
+Steps:
+1. Run: `python foundry/<project-name>/eval/evaluate.py --version <N>`
+   where N = (number of existing report files + 1)
+2. Script loads both base model and fine-tuned (with adapter) and runs 15 held-out prompts
+3. Computes per-response style metrics:
+   - **Feynman composite score** (higher = better style shift)
+   - **Flesch reading ease** (target: 60–80, base models ~30–50)
+   - **Analogy density** (Feynman keywords per 100 words)
+   - **Avg sentence length** (target: 12–16 words)
+   - **Avg word length** (shorter = more accessible)
+4. Saves full report to `foundry/<project-name>/eval/report_v{N}.md`
+5. Print the verdict:
+   - ✅ **Strong** (composite improvement ≥20%) — no retrain needed
+   - ⚠️ **Moderate** (8–20%) — consider retraining with higher iters/LR
+   - ❌ **Weak** (<8%) — retraining required, escalate rank + iters
+
+---
+
+## `/finetune retrain <project-name> <hf-repo>`
+
+Retrain with escalated hyperparameters and push to a versioned repo.
+
+Steps:
+1. Run: `python foundry/<project-name>/eval/retrain.py --repo <hf-repo>`
+2. Script auto-selects the next ladder step based on how many evals have been run:
+   - **Step 0** (v2): iters=2000, lr=3e-4, rank=16
+   - **Step 1** (v3): iters=2500, lr=3e-4, rank=32
+   - **Step 2** (v4): iters=3000, lr=4e-4, rank=32
+3. Updates `config/lora_config.yaml` with new params
+4. Runs training
+5. Pushes fused model to `<hf-repo>-v{N}` (e.g. `shabul/model-v2`)
+6. After push, run `/finetune score` again with `--version N` to compare
+
+---
+
+## `/finetune compare <project-name>`
+
+Show a side-by-side diff of all eval report versions.
+
+Steps:
+1. Find all `foundry/<project-name>/eval/report_v*.md` files
+2. Extract aggregate composite scores from each
+3. Print a version progression table:
+   | Version | Composite | Flesch | Analogy density | Verdict |
+   |---------|-----------|--------|-----------------|---------|
+   | v1 (base) | ... | ... | ... | baseline |
+   | v1 fine-tune | ... | ... | ... | ... |
+   | v2 fine-tune | ... | ... | ... | ... |
+4. Recommend whether further retraining is worth it
 
 ---
 
