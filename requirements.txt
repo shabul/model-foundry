@@ -1,0 +1,4 @@
+mlx-lm
+datasets
+huggingface_hub
+transformers

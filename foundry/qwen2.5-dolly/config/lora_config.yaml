@@ -1,0 +1,23 @@
+model: "Qwen/Qwen2.5-3B-Instruct"
+train: true
+data: data/
+
+# LoRA settings
+lora_layers: 16
+lora_parameters:
+  rank: 8
+  alpha: 16
+  dropout: 0.05
+  scale: 10.0
+
+# Training hyperparameters — tuned for M5 Mac (24 GB)
+batch_size: 2
+iters: 1000
+learning_rate: 1e-4
+
+# Reporting and checkpointing
+steps_per_report: 50
+steps_per_eval: 200
+save_every: 500
+adapter_path: adapters/
+max_seq_length: 1024

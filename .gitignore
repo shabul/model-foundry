@@ -1,0 +1,13 @@
+# Generated artifacts — not committed
+foundry/**/data/
+foundry/**/adapters/
+foundry/**/fused/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Mac
+.DS_Store
