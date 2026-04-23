@@ -8,7 +8,7 @@ sdk_version: 4.44.0
 app_file: app.py
 pinned: false
 license: apache-2.0
-short_description: Explains anything the way Feynman did — analogy first, no jargon.
+short_description: Feynman-style explanations with analogy-first answers.
 ---
 
 # Feynman Explainer

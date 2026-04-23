@@ -1,8 +1,7 @@
 ---
 base_model: Qwen/Qwen2.5-3B-Instruct
 datasets:
-- yahma/alpaca-cleaned
-- synthetic
+- shabul/feynman-explainer-dataset
 language:
 - en
 library_name: mlx
@@ -131,13 +130,16 @@ The difference is immediate. Same model weights, same question. Just a style shi
 |---|---|
 | **Base model** | `Qwen/Qwen2.5-3B-Instruct` |
 | **Method** | LoRA (rank 16, alpha 32) |
-| **Dataset** | ~430 custom + ~400 Alpaca questions, Claude-rewritten in Feynman style |
+| **Dataset** | [`shabul/feynman-explainer-dataset`](https://huggingface.co/datasets/shabul/feynman-explainer-dataset) · 575 synthetic prompts, chat-formatted into 517 train + 58 validation rows |
 | **Hardware** | Apple M5 MacBook Pro · 24 GB unified memory |
 | **Framework** | `mlx-lm` (Apple MLX) |
 | **Iterations** | 1,500 steps |
 | **Learning rate** | 2e-4 |
 
 *Full loss curve and throughput stats will be added after training.*
+
+The full training dataset is published here:
+[`shabul/feynman-explainer-dataset`](https://huggingface.co/datasets/shabul/feynman-explainer-dataset)
 
 ---
 

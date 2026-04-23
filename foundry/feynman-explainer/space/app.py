@@ -2,7 +2,7 @@
 Feynman Explainer — Gradio Chat App
 Runs on Hugging Face Spaces (CPU free tier).
 
-Loads qwen2.5-3b-feynman-explainer in float16 (~6 GB RAM).
+Loads qwen2.5-3b-feynman-explainer on CPU with a CPU-safe dtype.
 Streams tokens for a responsive ChatGPT-like experience.
 """
 
@@ -56,10 +56,10 @@ print(f"Loading model: {MODEL_ID}")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
-    torch_dtype=torch.float16,   # 6 GB — fits in free-tier 16 GB RAM
-    device_map="cpu",
+    torch_dtype=torch.float32,
     low_cpu_mem_usage=True,
 )
+model.to("cpu")
 model.eval()
 print("Model loaded.")
 

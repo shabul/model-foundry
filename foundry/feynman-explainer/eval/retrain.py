@@ -12,6 +12,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 
 import yaml
 
@@ -49,20 +50,19 @@ def read_composite_from_report(version: int) -> float | None:
     return float(m.group(1)) if m else None
 
 
-def update_config(iters: int, lr: str, rank: int):
+def build_config(iters: int, lr: str, rank: int) -> dict:
     with open(CONFIG_PATH) as f:
         cfg = yaml.safe_load(f)
     cfg["iters"] = iters
     cfg["learning_rate"] = float(lr)
     cfg["lora_parameters"]["rank"]  = rank
     cfg["lora_parameters"]["alpha"] = rank * 2
-    with open(CONFIG_PATH, "w") as f:
-        yaml.dump(cfg, f, default_flow_style=False)
     print(f"  Config updated: iters={iters}, lr={lr}, rank={rank}, alpha={rank*2}")
+    return cfg
 
 
-def run_training():
-    cmd = [sys.executable, "-m", "mlx_lm", "lora", "--config", CONFIG_PATH]
+def run_training(config_path: str):
+    cmd = [sys.executable, "-m", "mlx_lm", "lora", "--config", config_path]
     print(f"\nRunning: {' '.join(cmd)}\n")
     result = subprocess.run(cmd)
     if result.returncode != 0:
@@ -102,8 +102,16 @@ def main():
     print(f"Target repo  : {new_repo}")
     print(f"{'='*60}\n")
 
-    update_config(params["iters"], params["learning_rate"], params["lora_rank"])
-    run_training()
+    cfg = build_config(params["iters"], params["learning_rate"], params["lora_rank"])
+    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as tmp:
+        yaml.dump(cfg, tmp, default_flow_style=False)
+        temp_config_path = tmp.name
+
+    try:
+        run_training(temp_config_path)
+    finally:
+        if os.path.exists(temp_config_path):
+            os.unlink(temp_config_path)
 
     print(f"\nPushing v{new_version} → {new_repo}")
     fuse_and_push(BASE_MODEL, ADAPTER_PATH, new_repo, args.private)
