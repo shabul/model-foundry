@@ -1,0 +1,23 @@
+model: "mlx-community/gemma-2-9b-it-4bit"
+train: true
+data: foundry/sherlock-debugger/data/
+
+# LoRA parameters
+lora_layers: 16
+lora_parameters:
+  rank: 8
+  alpha: 16
+  dropout: 0.05
+  scale: 10.0
+
+# Training hyperparameters - optimized for M5 (24GB)
+batch_size: 1
+iters: 600
+learning_rate: 1e-4
+
+# Reporting and checkpointing
+steps_per_report: 10
+steps_per_eval: 50
+save_every: 200
+adapter_path: foundry/sherlock-debugger/adapters/
+max_seq_length: 512
