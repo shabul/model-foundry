@@ -281,7 +281,8 @@ Val loss was stable across all checkpoints (0.250–0.279), no divergence. The b
 | 4d — RSFT training | ✅ Done (300 iters) | adapters/rsft/ val=0.269 |
 | 5a — Perplexity | ✅ Done | SFT=4.29, RSFT=6.39 (+2.1) |
 | 5b — Win rate | ✅ Done | RSFT 66.7% vs SFT 33.3% (9 pairs) |
-| Demo | ⏸ Waiting | — |
+| Demo | ✅ Live (localhost:7860) | Gradio 6.x fixes applied |
+| Push to HuggingFace | ⏳ Uploading 4.3 GB | shabul/mistral-7b-desi-finance-advisor |
 
 ---
 
@@ -312,6 +313,18 @@ Target was >60% — **achieved**. RSFT wins on criteria of factual accuracy, app
 **Note on sample size:** Only 9 examples exist in `data/sft/valid.jsonl`, so statistical significance is limited. A true evaluation would require 50–100 held-out prompts. The 66.7% win rate is consistent with AlpacaFarm's finding that RSFT with N=4-5 achieves ~60-65% win rate over base SFT.
 
 **Reporting bug found and fixed:** `win_rate.py` was dividing by `N_EVAL=50` instead of the actual number of evaluated examples. Fixed to use `sum(results.values())`.
+
+### Step 3 — ✅ Gradio Demo
+Fixed Gradio 6.18.0 API changes:
+- `css` and `theme` moved from `gr.Blocks()` to `demo.launch()`
+- `bubble_full_width` and `show_copy_button` removed from `gr.Chatbot`
+
+Demo served HTTP 200 on localhost:7860 with the RSFT adapter loaded.
+
+### Step 4 — ⏳ Push to HuggingFace (in progress)
+Fusing RSFT LoRA adapter into base Mistral-7B weights and uploading to `shabul/mistral-7b-desi-finance-advisor`. Upload: 4.3 GB / ~10 min.
+
+Also fixed `shared/hub_utils.py`: `python -m mlx_lm.fuse` → `python -m mlx_lm fuse` (same deprecation pattern as LoRA training).
 
 ### Step 2 — Phase 5: Evaluation
 
