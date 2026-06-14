@@ -1,5 +1,5 @@
 """
-Fuse DPO adapters and push final model to Hugging Face Hub.
+Fuse RSFT adapters and push final model to Hugging Face Hub.
 
 Run from repo root:
     python foundry/desi-finance-advisor/push_to_hub.py --repo shabul/mistral-7b-desi-finance-advisor
@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from shared.hub_utils import fuse_and_push
 
 BASE_MODEL = "mlx-community/Mistral-7B-Instruct-v0.2-4bit"
-ADAPTER_PATH = os.path.join(os.path.dirname(__file__), "adapters", "dpo")
+ADAPTER_PATH = os.path.join(os.path.dirname(__file__), "adapters", "rsft")
 
 
 def main():

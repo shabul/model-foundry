@@ -16,7 +16,7 @@ CONFIG = os.path.join(os.path.dirname(__file__), "dpo_config.yaml")
 
 
 def main():
-    cmd = [sys.executable, "-m", "mlx_lm.lora", "--config", CONFIG, *sys.argv[1:]]
+    cmd = [sys.executable, "-m", "mlx_lm", "lora", "--config", CONFIG, *sys.argv[1:]]
     print("Running:", " ".join(cmd))
     result = subprocess.run(cmd)
     if result.returncode != 0:

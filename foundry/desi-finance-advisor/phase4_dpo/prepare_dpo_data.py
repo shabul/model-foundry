@@ -20,6 +20,21 @@ IN_FILE = os.path.join(DATA_DIR, "dpo", "triplets.jsonl")
 OUT_DIR = os.path.join(DATA_DIR, "dpo")
 
 
+def coerce_str(val) -> str:
+    """Gemini occasionally returns a list of dicts instead of a plain string."""
+    if isinstance(val, str):
+        return val.strip()
+    if isinstance(val, list):
+        parts = []
+        for item in val:
+            if isinstance(item, dict):
+                parts.append(item.get("response") or item.get("text") or str(item))
+            else:
+                parts.append(str(item))
+        return " ".join(parts).strip()
+    return str(val).strip()
+
+
 def extract_instruction(prompt: str) -> str:
     """Pull the bare user question out of a formatted Mistral prompt."""
     if "[INST]" in prompt:
@@ -41,15 +56,16 @@ def main():
     print(f"Loaded {len(triplets)} DPO triplets")
 
     # Reformat: strip prompt back to raw instruction so mlx-lm can apply template
-    formatted = [
-        {
-            "prompt": extract_instruction(t["prompt"]),
-            "chosen": t["chosen"].strip(),
-            "rejected": t["rejected"].strip(),
-        }
-        for t in triplets
-        if t["chosen"].strip() != t["rejected"].strip()
-    ]
+    formatted = []
+    for t in triplets:
+        chosen = coerce_str(t["chosen"])
+        rejected = coerce_str(t["rejected"])
+        if chosen and rejected and chosen != rejected:
+            formatted.append({
+                "prompt": extract_instruction(t["prompt"]),
+                "chosen": chosen,
+                "rejected": rejected,
+            })
     print(f"Valid triplets   : {len(formatted)}")
 
     train, valid = train_val_split(formatted, train_ratio=0.9)

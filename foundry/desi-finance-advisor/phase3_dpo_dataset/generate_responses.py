@@ -11,6 +11,7 @@ import os
 import sys
 
 from mlx_lm import load, generate
+from mlx_lm.sample_utils import make_sampler
 
 SFT_MODEL = "mlx-community/Mistral-7B-Instruct-v0.2-4bit"
 SFT_ADAPTER = os.path.join(os.path.dirname(__file__), "..", "adapters", "sft")
@@ -68,7 +69,7 @@ def main():
                     model, tokenizer,
                     prompt=prompt_only,
                     max_tokens=MAX_TOKENS,
-                    temp=TEMPERATURE,
+                    sampler=make_sampler(temp=TEMPERATURE),
                     verbose=False,
                 )
                 cleaned = strip_response(output, prompt_only)

@@ -13,7 +13,7 @@ CONFIG = os.path.join(os.path.dirname(__file__), "sft_config.yaml")
 
 
 def main():
-    cmd = [sys.executable, "-m", "mlx_lm.lora", "--config", CONFIG, *sys.argv[1:]]
+    cmd = [sys.executable, "-m", "mlx_lm", "lora", "--config", CONFIG, *sys.argv[1:]]
     print("Running:", " ".join(cmd))
     sys.exit(subprocess.run(cmd).returncode)
 

@@ -1,0 +1,26 @@
+model: "mlx-community/Mistral-7B-Instruct-v0.2-4bit"
+train: true
+data: foundry/desi-finance-advisor/data/rsft/
+
+# Start from the best SFT checkpoint (iter-300, val_loss=1.471)
+resume_adapter_file: foundry/desi-finance-advisor/adapters/sft/adapters.safetensors
+
+# LoRA — same rank as SFT for adapter compatibility
+lora_layers: 16
+lora_parameters:
+  rank: 16
+  alpha: 32
+  dropout: 0.0
+  scale: 10.0
+
+# RSFT converges faster than SFT (smaller, higher-quality dataset)
+batch_size: 1
+iters: 300
+learning_rate: 2e-5          # lower LR: we're refining, not training from scratch
+grad_checkpoint: false
+
+steps_per_report: 10
+steps_per_eval: 50
+save_every: 100
+adapter_path: foundry/desi-finance-advisor/adapters/rsft/
+max_seq_length: 768

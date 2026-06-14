@@ -49,11 +49,38 @@ FALLBACK_CHAPTERS = [
 ]
 
 
+def fetch_with_retry(url: str, retries: int = 5) -> requests.Response | None:
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=20)
+            if r.status_code == 429:
+                wait = 15 * (2 ** attempt)
+                print(f"  429 rate-limited — waiting {wait}s before retry...")
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            return r
+        except requests.exceptions.HTTPError as e:
+            if "429" in str(e):
+                wait = 15 * (2 ** attempt)
+                print(f"  429 rate-limited — waiting {wait}s before retry...")
+                time.sleep(wait)
+            else:
+                print(f"  HTTP error: {e}")
+                return None
+        except Exception as e:
+            print(f"  Error fetching {url}: {e}")
+            return None
+    print(f"  Gave up after {retries} attempts: {url}")
+    return None
+
+
 def get_chapter_links(module_slug: str) -> list[str]:
     url = f"{BASE_URL}/varsity/module/{module_slug}/"
+    r = fetch_with_retry(url)
+    if not r:
+        return []
     try:
-        r = requests.get(url, headers=HEADERS, timeout=15)
-        r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
         links = []
         for a in soup.find_all("a", href=True):
@@ -65,14 +92,15 @@ def get_chapter_links(module_slug: str) -> list[str]:
         print(f"  {module_slug}: {len(links)} chapters found")
         return links
     except Exception as e:
-        print(f"  Warning: could not fetch module '{module_slug}': {e}")
+        print(f"  Parse error for module '{module_slug}': {e}")
         return []
 
 
 def scrape_chapter(url: str) -> dict | None:
+    r = fetch_with_retry(url)
+    if not r:
+        return None
     try:
-        r = requests.get(url, headers=HEADERS, timeout=15)
-        r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
         title_tag = soup.find("h1") or soup.find("h2")
@@ -135,7 +163,7 @@ def main():
         record = scrape_chapter(url)
         if record:
             all_chunks.extend(chunk_paragraphs(record))
-        time.sleep(0.6)
+        time.sleep(4)
 
     out = os.path.join(DATA_DIR, "varsity_chunks.jsonl")
     with open(out, "w") as f:

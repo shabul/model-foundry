@@ -1,6 +1,6 @@
 """
 Gradio chat demo for Desi Finance Advisor.
-Loads the DPO-tuned model and serves a chat interface.
+Loads the RSFT-aligned model and serves a chat interface.
 
 Run from repo root:
     python foundry/desi-finance-advisor/demo/gradio_app.py
@@ -14,9 +14,10 @@ import os
 
 import gradio as gr
 from mlx_lm import load, stream_generate
+from mlx_lm.sample_utils import make_sampler
 
 BASE_MODEL = "mlx-community/Mistral-7B-Instruct-v0.2-4bit"
-DEFAULT_ADAPTER = os.path.join(os.path.dirname(__file__), "..", "adapters", "dpo")
+DEFAULT_ADAPTER = os.path.join(os.path.dirname(__file__), "..", "adapters", "rsft")
 
 SYSTEM_PROMPT = (
     "You are Desi Finance Bhai — a warm, knowledgeable Indian personal finance advisor. "
@@ -61,7 +62,8 @@ def respond(message: str, history: list, model_state):
     model, tokenizer = model_state
     prompt = build_prompt(message, history)
     output = ""
-    for token in stream_generate(model, tokenizer, prompt=prompt, max_tokens=450, temp=0.35):
+    for response in stream_generate(model, tokenizer, prompt=prompt, max_tokens=450, sampler=make_sampler(temp=0.35)):
+        token = response.text
         output += token
         yield output
 
@@ -88,7 +90,7 @@ def main():
     model, tokenizer = load_model(args.model, args.adapter)
     model_state = (model, tokenizer)
 
-    with gr.Blocks(css=CSS, theme=gr.themes.Soft()) as demo:
+    with gr.Blocks() as demo:
         gr.HTML("""
         <div style="text-align:center; padding: 20px 0 10px 0;">
             <h1 style="font-size:2em; margin:0;">🇮🇳 Desi Finance Advisor</h1>
@@ -101,8 +103,6 @@ def main():
         chatbot = gr.Chatbot(
             label="Chat",
             height=480,
-            bubble_full_width=False,
-            show_copy_button=True,
         )
 
         with gr.Row():
@@ -144,7 +144,7 @@ def main():
         )
 
     demo.queue()
-    demo.launch(server_port=args.port, show_api=False)
+    demo.launch(server_port=args.port, css=CSS, theme=gr.themes.Soft())
 
 
 if __name__ == "__main__":

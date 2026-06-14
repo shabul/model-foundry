@@ -1,5 +1,5 @@
 """
-Compare SFT vs DPO model perplexity on the validation set.
+Compare SFT vs RSFT model perplexity on the validation set.
 Lower perplexity = better language quality.
 
 Run from repo root:
@@ -16,8 +16,8 @@ import mlx.nn as nn
 from mlx_lm import load
 
 BASE_MODEL = "mlx-community/Mistral-7B-Instruct-v0.2-4bit"
-SFT_ADAPTER = os.path.join(os.path.dirname(__file__), "..", "adapters", "sft")
-DPO_ADAPTER = os.path.join(os.path.dirname(__file__), "..", "adapters", "dpo")
+SFT_ADAPTER  = os.path.join(os.path.dirname(__file__), "..", "adapters", "sft")
+RSFT_ADAPTER = os.path.join(os.path.dirname(__file__), "..", "adapters", "rsft")
 VALID_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "sft", "valid.jsonl")
 
 MAX_EXAMPLES = 100
@@ -58,7 +58,7 @@ def main():
     print(f"Validation examples: {len(examples)}\n")
 
     results = {}
-    for name, adapter in [("SFT", SFT_ADAPTER), ("DPO", DPO_ADAPTER)]:
+    for name, adapter in [("SFT", SFT_ADAPTER), ("RSFT", RSFT_ADAPTER)]:
         if not os.path.isdir(adapter):
             print(f"Skipping {name}: adapter not found at {adapter}")
             continue
@@ -73,16 +73,16 @@ def main():
     for name, ppl in results.items():
         print(f"  {name:5s}  ppl = {ppl:.3f}")
 
-    if "SFT" in results and "DPO" in results:
-        delta = results["DPO"] - results["SFT"]
+    if "SFT" in results and "RSFT" in results:
+        delta = results["RSFT"] - results["SFT"]
         sign = "↑ worse" if delta > 0 else "↓ better"
-        print(f"\n  DPO vs SFT: {delta:+.3f}  ({sign})")
+        print(f"\n  RSFT vs SFT: {delta:+.3f}  ({sign})")
         if delta < 2.0:
-            print("  DPO did not significantly hurt language quality.")
+            print("  RSFT did not significantly hurt language quality.")
 
     out = os.path.join(os.path.dirname(__file__), "perplexity_results.json")
     with open(out, "w") as f:
-        json.dump(results, f, indent=2)
+        json.dump({k: round(v, 4) for k, v in results.items()}, f, indent=2)
     print(f"\nResults saved → {out}")
 
 

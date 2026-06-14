@@ -11,9 +11,9 @@ lora_parameters:
   scale: 10.0
 
 # Training — tuned for M5 24GB
-batch_size: 2
+batch_size: 1
 iters: 1200
-learning_rate: 2e-4
+learning_rate: 5e-5
 grad_checkpoint: false
 
 # Reporting
