@@ -1,0 +1,31 @@
+model: "mlx-community/Mistral-7B-Instruct-v0.2-4bit"
+train: true
+data: foundry/desi-finance-advisor/data/dpo/
+
+# Start DPO from the SFT adapter
+resume_adapter_file: foundry/desi-finance-advisor/adapters/sft/adapters.safetensors
+
+# DPO method
+method: dpo
+dpo_beta: 0.1               # KL penalty — 0.1 is standard; lower = more aggressive
+
+# LoRA (same rank as SFT for compatibility)
+lora_layers: 16
+lora_parameters:
+  rank: 16
+  alpha: 32
+  dropout: 0.0
+  scale: 10.0
+
+# Training — DPO converges faster, 1 epoch is typically enough
+batch_size: 1
+iters: 400
+learning_rate: 5e-5
+grad_checkpoint: false
+
+# Reporting
+steps_per_report: 10
+steps_per_eval: 50
+save_every: 200
+adapter_path: foundry/desi-finance-advisor/adapters/dpo/
+max_seq_length: 768

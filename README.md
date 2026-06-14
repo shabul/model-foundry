@@ -38,6 +38,7 @@
 | 2 | [feynman-explainer](foundry/feynman-explainer/) | Analogy-first teacher | `Qwen2.5-3B-Instruct` | [shabul/feynman-explainer-dataset](https://huggingface.co/datasets/shabul/feynman-explainer-dataset) | [shabul/qwen2.5-3b-feynman-explainer](https://huggingface.co/shabul/qwen2.5-3b-feynman-explainer) | [▶ Space](https://huggingface.co/spaces/shabul/feynman-explainer) | — |
 | 3 | [devils-advocate](foundry/devils-advocate/) | Logical counter-arguer | `Gemma-2-9B-IT` | synthetic · 20 concepts | [shabul/gemma-2-9b-devils-advocate](https://huggingface.co/shabul/gemma-2-9b-devils-advocate) | — | — |
 | 4 | [sherlock-debugger](foundry/sherlock-debugger/) | Deductive bug detective | `Gemma-2-9B-IT` | synthetic · 20 cases | [shabul/gemma-2-9b-sherlock-debugger](https://huggingface.co/shabul/gemma-2-9b-sherlock-debugger) | — | — |
+| 5 | [desi-finance-advisor](foundry/desi-finance-advisor/) | Indian personal finance bhai | `Mistral-7B-Instruct-v0.2` | Zerodha Varsity + synthetic | `shabul/mistral-7b-desi-finance-advisor` *(post-training)* | — | — |
 
 ---
 
@@ -146,7 +147,9 @@ model-foundry/
 │   │   ├── push_to_hub.py
 │   │   └── push_dataset_to_hub.py
 │   │
-│   └── sherlock-debugger/          # Forge #4 — Deductive bug detective
+│   ├── sherlock-debugger/          # Forge #4 — Deductive bug detective
+│   │
+│   └── desi-finance-advisor/       # Forge #5 — Indian personal finance (SFT + DPO)
 │       ├── config/lora_config.yaml
 │       ├── data/
 │       ├── generate_dataset.py

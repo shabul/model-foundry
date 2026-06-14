@@ -1,0 +1,8 @@
+mlx-lm
+transformers
+datasets
+huggingface_hub
+google-genai
+gradio
+requests
+beautifulsoup4

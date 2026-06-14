@@ -1,0 +1,24 @@
+model: "mlx-community/Mistral-7B-Instruct-v0.2-4bit"
+train: true
+data: foundry/desi-finance-advisor/data/sft/
+
+# LoRA parameters
+lora_layers: 16
+lora_parameters:
+  rank: 16
+  alpha: 32
+  dropout: 0.05
+  scale: 10.0
+
+# Training — tuned for M5 24GB
+batch_size: 2
+iters: 1200
+learning_rate: 2e-4
+grad_checkpoint: false
+
+# Reporting
+steps_per_report: 10
+steps_per_eval: 100
+save_every: 300
+adapter_path: foundry/desi-finance-advisor/adapters/sft/
+max_seq_length: 768
