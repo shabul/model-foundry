@@ -33,7 +33,7 @@ def fuse_and_push(base_model: str, adapter_path: str, repo_id: str, private: boo
 
     with tempfile.TemporaryDirectory() as tmp:
         cmd = [
-            sys.executable, "-m", "mlx_lm.fuse",
+            sys.executable, "-m", "mlx_lm", "fuse",
             "--model", base_model,
             "--adapter-path", adapter_path,
             "--save-path", tmp,
