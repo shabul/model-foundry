@@ -1,0 +1,62 @@
+{
+  "train": {
+    "rows": 64908,
+    "sources": {
+      "banking77": 16012,
+      "massive": 21520,
+      "typed_decisions": 4715,
+      "synthetic": 22661
+    },
+    "state_truncated_at_512": {
+      "banking77": 0,
+      "massive": 0,
+      "typed_decisions": 118,
+      "synthetic": 0
+    },
+    "question_options_overflow": [],
+    "abstention": {
+      "available": 30420,
+      "positive": 7720
+    }
+  },
+  "validation": {
+    "rows": 4174,
+    "sources": {
+      "banking77": 987,
+      "massive": 1374,
+      "typed_decisions": 640,
+      "synthetic": 1173
+    },
+    "state_truncated_at_512": {
+      "banking77": 0,
+      "massive": 0,
+      "typed_decisions": 8,
+      "synthetic": 0
+    },
+    "question_options_overflow": [],
+    "abstention": {
+      "available": 1738,
+      "positive": 389
+    }
+  },
+  "calibration": {
+    "rows": 5284,
+    "sources": {
+      "banking77": 999,
+      "massive": 1339,
+      "typed_decisions": 645,
+      "synthetic": 2301
+    },
+    "state_truncated_at_512": {
+      "banking77": 0,
+      "massive": 0,
+      "typed_decisions": 8,
+      "synthetic": 0
+    },
+    "question_options_overflow": [],
+    "abstention": {
+      "available": 1662,
+      "positive": 592
+    }
+  }
+}

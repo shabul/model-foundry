@@ -1,0 +1,362 @@
+{
+  "datetime_query": {
+    "id": "datetime_query",
+    "label": "Ask for the current date or time",
+    "description": "Ask for the current date or time.",
+    "group": "datetime"
+  },
+  "iot_hue_lightchange": {
+    "id": "iot_hue_lightchange",
+    "label": "Change the color of a smart light",
+    "description": "Change the color of a smart light.",
+    "group": "iot"
+  },
+  "transport_ticket": {
+    "id": "transport_ticket",
+    "label": "Book or buy a transport ticket",
+    "description": "Book or buy a transport ticket.",
+    "group": "transport"
+  },
+  "takeaway_query": {
+    "id": "takeaway_query",
+    "label": "Ask about takeaway food options",
+    "description": "Ask about takeaway food options.",
+    "group": "takeaway"
+  },
+  "qa_stock": {
+    "id": "qa_stock",
+    "label": "Ask for stock market information",
+    "description": "Ask for stock market information.",
+    "group": "qa"
+  },
+  "general_greet": {
+    "id": "general_greet",
+    "label": "Greet the assistant",
+    "description": "Greet the assistant.",
+    "group": "general"
+  },
+  "recommendation_events": {
+    "id": "recommendation_events",
+    "label": "Recommend events to attend",
+    "description": "Recommend events to attend.",
+    "group": "recommendation"
+  },
+  "music_dislikeness": {
+    "id": "music_dislikeness",
+    "label": "Express dislike for music",
+    "description": "Express dislike for music.",
+    "group": "music"
+  },
+  "iot_wemo_off": {
+    "id": "iot_wemo_off",
+    "label": "Switch a connected device off",
+    "description": "Switch a connected device off.",
+    "group": "iot"
+  },
+  "cooking_recipe": {
+    "id": "cooking_recipe",
+    "label": "Request a cooking recipe",
+    "description": "Request a cooking recipe.",
+    "group": "cooking"
+  },
+  "qa_currency": {
+    "id": "qa_currency",
+    "label": "Ask about currency exchange",
+    "description": "Ask about currency exchange.",
+    "group": "qa"
+  },
+  "transport_traffic": {
+    "id": "transport_traffic",
+    "label": "Ask about road traffic",
+    "description": "Ask about road traffic.",
+    "group": "transport"
+  },
+  "general_quirky": {
+    "id": "general_quirky",
+    "label": "Make a conversational or quirky request",
+    "description": "Make a conversational or quirky request.",
+    "group": "general"
+  },
+  "weather_query": {
+    "id": "weather_query",
+    "label": "Ask about the weather",
+    "description": "Ask about the weather.",
+    "group": "weather"
+  },
+  "audio_volume_up": {
+    "id": "audio_volume_up",
+    "label": "Increase audio volume",
+    "description": "Increase audio volume.",
+    "group": "audio"
+  },
+  "email_addcontact": {
+    "id": "email_addcontact",
+    "label": "Add an email contact",
+    "description": "Add an email contact.",
+    "group": "email"
+  },
+  "takeaway_order": {
+    "id": "takeaway_order",
+    "label": "Order takeaway food",
+    "description": "Order takeaway food.",
+    "group": "takeaway"
+  },
+  "email_querycontact": {
+    "id": "email_querycontact",
+    "label": "Look up an email contact",
+    "description": "Look up an email contact.",
+    "group": "email"
+  },
+  "iot_hue_lightup": {
+    "id": "iot_hue_lightup",
+    "label": "Increase smart light brightness",
+    "description": "Increase smart light brightness.",
+    "group": "iot"
+  },
+  "recommendation_locations": {
+    "id": "recommendation_locations",
+    "label": "Recommend places to visit",
+    "description": "Recommend places to visit.",
+    "group": "recommendation"
+  },
+  "play_audiobook": {
+    "id": "play_audiobook",
+    "label": "Play an audiobook",
+    "description": "Play an audiobook.",
+    "group": "play"
+  },
+  "lists_createoradd": {
+    "id": "lists_createoradd",
+    "label": "Create a list or add an item",
+    "description": "Create a list or add an item.",
+    "group": "lists"
+  },
+  "news_query": {
+    "id": "news_query",
+    "label": "Ask for news",
+    "description": "Ask for news.",
+    "group": "news"
+  },
+  "alarm_query": {
+    "id": "alarm_query",
+    "label": "Ask about existing alarms",
+    "description": "Ask about existing alarms.",
+    "group": "alarm"
+  },
+  "iot_wemo_on": {
+    "id": "iot_wemo_on",
+    "label": "Switch a connected device on",
+    "description": "Switch a connected device on.",
+    "group": "iot"
+  },
+  "general_joke": {
+    "id": "general_joke",
+    "label": "Request a joke",
+    "description": "Request a joke.",
+    "group": "general"
+  },
+  "qa_definition": {
+    "id": "qa_definition",
+    "label": "Ask for a definition",
+    "description": "Ask for a definition.",
+    "group": "qa"
+  },
+  "social_query": {
+    "id": "social_query",
+    "label": "Read or search social media",
+    "description": "Read or search social media.",
+    "group": "social"
+  },
+  "music_settings": {
+    "id": "music_settings",
+    "label": "Change music playback settings",
+    "description": "Change music playback settings.",
+    "group": "music"
+  },
+  "audio_volume_other": {
+    "id": "audio_volume_other",
+    "label": "Set or query audio volume",
+    "description": "Set or query audio volume.",
+    "group": "audio"
+  },
+  "calendar_remove": {
+    "id": "calendar_remove",
+    "label": "Remove a calendar event",
+    "description": "Remove a calendar event.",
+    "group": "calendar"
+  },
+  "iot_hue_lightdim": {
+    "id": "iot_hue_lightdim",
+    "label": "Decrease smart light brightness",
+    "description": "Decrease smart light brightness.",
+    "group": "iot"
+  },
+  "calendar_query": {
+    "id": "calendar_query",
+    "label": "Ask about calendar events",
+    "description": "Ask about calendar events.",
+    "group": "calendar"
+  },
+  "email_sendemail": {
+    "id": "email_sendemail",
+    "label": "Send an email",
+    "description": "Send an email.",
+    "group": "email"
+  },
+  "iot_cleaning": {
+    "id": "iot_cleaning",
+    "label": "Control a cleaning device",
+    "description": "Control a cleaning device.",
+    "group": "iot"
+  },
+  "audio_volume_down": {
+    "id": "audio_volume_down",
+    "label": "Decrease audio volume",
+    "description": "Decrease audio volume.",
+    "group": "audio"
+  },
+  "play_radio": {
+    "id": "play_radio",
+    "label": "Play a radio station",
+    "description": "Play a radio station.",
+    "group": "play"
+  },
+  "cooking_query": {
+    "id": "cooking_query",
+    "label": "Ask a cooking question",
+    "description": "Ask a cooking question.",
+    "group": "cooking"
+  },
+  "datetime_convert": {
+    "id": "datetime_convert",
+    "label": "Convert time between time zones",
+    "description": "Convert time between time zones.",
+    "group": "datetime"
+  },
+  "qa_maths": {
+    "id": "qa_maths",
+    "label": "Calculate a mathematical answer",
+    "description": "Calculate a mathematical answer.",
+    "group": "qa"
+  },
+  "iot_hue_lightoff": {
+    "id": "iot_hue_lightoff",
+    "label": "Turn a smart light off",
+    "description": "Turn a smart light off.",
+    "group": "iot"
+  },
+  "iot_hue_lighton": {
+    "id": "iot_hue_lighton",
+    "label": "Turn a smart light on",
+    "description": "Turn a smart light on.",
+    "group": "iot"
+  },
+  "transport_query": {
+    "id": "transport_query",
+    "label": "Ask about transport schedules or routes",
+    "description": "Ask about transport schedules or routes.",
+    "group": "transport"
+  },
+  "music_likeness": {
+    "id": "music_likeness",
+    "label": "Express liking for music",
+    "description": "Express liking for music.",
+    "group": "music"
+  },
+  "email_query": {
+    "id": "email_query",
+    "label": "Read or search emails",
+    "description": "Read or search emails.",
+    "group": "email"
+  },
+  "play_music": {
+    "id": "play_music",
+    "label": "Play music",
+    "description": "Play music.",
+    "group": "play"
+  },
+  "audio_volume_mute": {
+    "id": "audio_volume_mute",
+    "label": "Mute audio",
+    "description": "Mute audio.",
+    "group": "audio"
+  },
+  "social_post": {
+    "id": "social_post",
+    "label": "Post to social media",
+    "description": "Post to social media.",
+    "group": "social"
+  },
+  "alarm_set": {
+    "id": "alarm_set",
+    "label": "Set an alarm",
+    "description": "Set an alarm.",
+    "group": "alarm"
+  },
+  "qa_factoid": {
+    "id": "qa_factoid",
+    "label": "Ask a factual knowledge question",
+    "description": "Ask a factual knowledge question.",
+    "group": "qa"
+  },
+  "calendar_set": {
+    "id": "calendar_set",
+    "label": "Create a calendar event",
+    "description": "Create a calendar event.",
+    "group": "calendar"
+  },
+  "play_game": {
+    "id": "play_game",
+    "label": "Play a game",
+    "description": "Play a game.",
+    "group": "play"
+  },
+  "alarm_remove": {
+    "id": "alarm_remove",
+    "label": "Remove an alarm",
+    "description": "Remove an alarm.",
+    "group": "alarm"
+  },
+  "lists_remove": {
+    "id": "lists_remove",
+    "label": "Remove an item from a list",
+    "description": "Remove an item from a list.",
+    "group": "lists"
+  },
+  "transport_taxi": {
+    "id": "transport_taxi",
+    "label": "Request a taxi",
+    "description": "Request a taxi.",
+    "group": "transport"
+  },
+  "recommendation_movies": {
+    "id": "recommendation_movies",
+    "label": "Recommend movies",
+    "description": "Recommend movies.",
+    "group": "recommendation"
+  },
+  "iot_coffee": {
+    "id": "iot_coffee",
+    "label": "Control a coffee maker",
+    "description": "Control a coffee maker.",
+    "group": "iot"
+  },
+  "music_query": {
+    "id": "music_query",
+    "label": "Ask about music",
+    "description": "Ask about music.",
+    "group": "music"
+  },
+  "play_podcasts": {
+    "id": "play_podcasts",
+    "label": "Play a podcast",
+    "description": "Play a podcast.",
+    "group": "play"
+  },
+  "lists_query": {
+    "id": "lists_query",
+    "label": "Read or search a list",
+    "description": "Read or search a list.",
+    "group": "lists"
+  }
+}

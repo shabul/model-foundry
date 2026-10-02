@@ -1,0 +1,14 @@
+# Data investigation
+
+Pinned identities, splits and schemas are in `../data/manifests/sources.json`; processed hashes and group counts are in `../data/manifests/dataset.json`. Token budgets and abstention counts are in `dataset_audit.json`.
+
+- BANKING77: original train 10,003 and test 3,080; text plus intent. Card declares CC-BY-4.0. Original data uses string categories. Legacy Hugging Face dataset script is unsupported by datasets 4; download original upstream CSV at a recorded Git commit. Source: https://huggingface.co/datasets/PolyAI/banking77 .
+- MASSIVE en-US: train 11,514, validation 2,033, test 2,974; 60 intents, 18 scenarios. Card declares CC-BY-4.0. Download immutable converted Parquet revision and preserve ClassLabel names. Source: https://huggingface.co/datasets/AmazonScience/massive .
+- Typed Decisions: 1,200 train cases, 400 test cases, five decisions per case; four workflows. Card declares Apache-2.0. Preserve criteria and teacher probabilities; rounding normalization is permitted only within 1e-4 of unit mass. Boolean questions sometimes omit criteria; map to explicit true/false descriptions. Never include latent factors or label agreement in model input. Source: https://huggingface.co/datasets/LocalLLaMA/typed-decisions .
+- DecisionBench: the relevant runtime-choice dataset is Hanno-Labs/decision-bench, canonical eval split, revision 071b7b2d2e1504c89e1e5a811a3f82e1bfe3aedb. Its card declares license `other`; no permission to redistribute is inferred. It has 23,900 rows and candidate counts up to 255, which exceeds V1's ordinary 2–8-candidate workload and often its token budget. Keep evaluation-only and report context coverage. Read only the card/schema before final checkpoint selection. Source: https://huggingface.co/datasets/Hanno-Labs/decision-bench .
+
+Code and dataset licensing are distinct. Preserve source attribution/license notices and transformation descriptions; publish a rebuilding recipe instead of bundling third-party raw corpora. No claim is made that third-party data adopts the package's eventual code license.
+
+No extra datasets are included in V1: scope and provenance are clearer with the four planned sources. NLI/verification extensions can be investigated after baseline results. Taxonomy descriptions are checked-in artifacts, not regenerated during training; several BANKING77 descriptions intentionally stay close to their original intent names and remain a candidate for future expert refinement.
+
+Synthetic examples include rule text, structured causal state, seed, template, domain and abstention reason. Boolean rule families have few distinct causal states, so grouped splits can be imbalanced. Report per-type metrics and independent group counts; repeated renderings must not inflate statistical confidence. A held-out-template stress suite is separate from in-domain evaluation.

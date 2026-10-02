@@ -1,0 +1,45 @@
+{
+  "banking77": {
+    "repo": "PolyAI/banking77",
+    "config": null,
+    "revision": "90d4e2ee5521c04fc1488f065b8b083658768c57",
+    "license": "cc-by-4.0",
+    "splits": {
+      "train": 10003,
+      "test": 3080
+    },
+    "features": "{'text': Value('large_string'), 'category': Value('large_string')}",
+    "usage": "original test evaluation-only; train-derived grouped splits",
+    "upstream_commit": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+    "file_sha256": {
+      "train": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b",
+      "test": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d"
+    }
+  },
+  "massive": {
+    "repo": "AmazonScience/massive",
+    "config": "en-US",
+    "revision": "ff6bd8e4b27c3543e4f8fe2108f32bb95a6f8740",
+    "license": "cc-by-4.0",
+    "splits": {
+      "train": 11514,
+      "validation": 2033,
+      "test": 2974
+    },
+    "features": "{'id': Value('string'), 'locale': Value('string'), 'partition': Value('string'), 'scenario': ClassLabel(names=['social', 'transport', 'calendar', 'play', 'news', 'datetime', 'recommendation', 'email', 'iot', 'general', 'audio', 'lists', 'qa', 'cooking', 'takeaway', 'music', 'alarm', 'weather']), 'intent': ClassLabel(names=['datetime_query', 'iot_hue_lightchange', 'transport_ticket', 'takeaway_query', 'qa_stock', 'general_greet', 'recommendation_events', 'music_dislikeness', 'iot_wemo_off', 'cooking_recipe', 'qa_currency', 'transport_traffic', 'general_quirky', 'weather_query', 'audio_volume_up', 'email_addcontact', 'takeaway_order', 'email_querycontact', 'iot_hue_lightup', 'recommendation_locations', 'play_audiobook', 'lists_createoradd', 'news_query', 'alarm_query', 'iot_wemo_on', 'general_joke', 'qa_definition', 'social_query', 'music_settings', 'audio_volume_other', 'calendar_remove', 'iot_hue_lightdim', 'calendar_query', 'email_sendemail', 'iot_cleaning', 'audio_volume_down', 'play_radio', 'cooking_query', 'datetime_convert', 'qa_maths', 'iot_hue_lightoff', 'iot_hue_lighton', 'transport_query', 'music_likeness', 'email_query', 'play_music', 'audio_volume_mute', 'social_post', 'alarm_set', 'qa_factoid', 'calendar_set', 'play_game', 'alarm_remove', 'lists_remove', 'transport_taxi', 'recommendation_movies', 'iot_coffee', 'music_query', 'play_podcasts', 'lists_query']), 'utt': Value('string'), 'annot_utt': Value('string'), 'worker_id': Value('string'), 'slot_method': {'slot': List(Value('string')), 'method': List(Value('string'))}, 'judgments': {'worker_id': List(Value('string')), 'intent_score': List(Value('int8')), 'slots_score': List(Value('int8')), 'grammar_score': List(Value('int8')), 'spelling_score': List(Value('int8')), 'language_identification': List(Value('string'))}}",
+    "usage": "original test evaluation-only; train-derived grouped splits",
+    "parquet_revision": "ed58ac423a2f4121720918bf5301577edce4ffd3"
+  },
+  "typed_decisions": {
+    "repo": "LocalLLaMA/typed-decisions",
+    "config": "all",
+    "revision": "d0e2f0c42fef86cc15d1688d25a19f5ba7c85b18",
+    "license": "apache-2.0",
+    "splits": {
+      "train": 1200,
+      "test": 400
+    },
+    "features": "{'id': Value('string'), 'workflow': Value('string'), 'split': Value('string'), 'state': Value('string'), 'questions': Value('string'), 'gold': Value('string'), 'factors': Value('string'), 'label_agreement': Value('string'), 'n_questions': Value('int64')}",
+    "usage": "original test evaluation-only; train-derived grouped splits"
+  }
+}

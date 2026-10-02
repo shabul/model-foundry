@@ -1,0 +1,50 @@
+[
+  {
+    "bf16": false,
+    "batch_size": 4,
+    "length": 512,
+    "step_seconds": 0.7791018753332537,
+    "examples_per_second": 5.134116765267747,
+    "max_observed_driver_bytes": 6612172800
+  },
+  {
+    "bf16": false,
+    "batch_size": 8,
+    "length": 512,
+    "step_seconds": 1.5239362359998267,
+    "examples_per_second": 5.2495634732061776,
+    "max_observed_driver_bytes": 8738668544
+  },
+  {
+    "bf16": false,
+    "batch_size": 16,
+    "length": 512,
+    "step_seconds": 3.1606069030000676,
+    "examples_per_second": 5.06231888084934,
+    "max_observed_driver_bytes": 16273735680
+  },
+  {
+    "bf16": true,
+    "batch_size": 4,
+    "length": 512,
+    "step_seconds": 0.580181971999688,
+    "examples_per_second": 6.894388645364788,
+    "max_observed_driver_bytes": 13046218752
+  },
+  {
+    "bf16": true,
+    "batch_size": 8,
+    "length": 512,
+    "step_seconds": 1.1099665003333332,
+    "examples_per_second": 7.207424726419695,
+    "max_observed_driver_bytes": 9791438848
+  },
+  {
+    "bf16": true,
+    "batch_size": 16,
+    "length": 512,
+    "step_seconds": 2.18266052733361,
+    "examples_per_second": 7.330503209102325,
+    "max_observed_driver_bytes": 14080114688
+  }
+]

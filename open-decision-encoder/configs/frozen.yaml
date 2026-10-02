@@ -1,0 +1,16 @@
+stage: frozen
+model: answerdotai/ModernBERT-base
+model_revision: 8949b909ec900327062f0ebf497f51aef5e6f0c8
+mode: frozen
+seed: 42
+train_data: data/processed/train.jsonl
+validation_data: data/processed/validation.jsonl
+output: checkpoints/frozen
+max_length: 512
+overflow: truncate_state
+batch_size: 16
+gradient_accumulation: 1
+head_lr: 0.001
+encoder_lr: 0.00001
+epochs: 1
+bf16: true

@@ -1,0 +1,464 @@
+{
+  "Refund_not_showing_up": {
+    "id": "Refund_not_showing_up",
+    "label": "Refund not showing up",
+    "description": "Report an expected refund missing from the balance.",
+    "group": "Refund"
+  },
+  "activate_my_card": {
+    "id": "activate_my_card",
+    "label": "Activate my card",
+    "description": "The customer asks about activate my card.",
+    "group": "card"
+  },
+  "age_limit": {
+    "id": "age_limit",
+    "label": "Age limit",
+    "description": "Ask about the minimum or maximum customer age.",
+    "group": "age"
+  },
+  "apple_pay_or_google_pay": {
+    "id": "apple_pay_or_google_pay",
+    "label": "Apple pay or google pay",
+    "description": "The customer asks about apple pay or google pay.",
+    "group": "apple"
+  },
+  "atm_support": {
+    "id": "atm_support",
+    "label": "Atm support",
+    "description": "The customer asks about atm support.",
+    "group": "atm"
+  },
+  "automatic_top_up": {
+    "id": "automatic_top_up",
+    "label": "Automatic top up",
+    "description": "The customer asks about automatic top up.",
+    "group": "top_up"
+  },
+  "balance_not_updated_after_bank_transfer": {
+    "id": "balance_not_updated_after_bank_transfer",
+    "label": "Balance not updated after bank transfer",
+    "description": "A bank transfer arrived but the balance is unchanged.",
+    "group": "transfer"
+  },
+  "balance_not_updated_after_cheque_or_cash_deposit": {
+    "id": "balance_not_updated_after_cheque_or_cash_deposit",
+    "label": "Balance not updated after cheque or cash deposit",
+    "description": "The balance is unchanged after a cash or cheque deposit.",
+    "group": "balance"
+  },
+  "beneficiary_not_allowed": {
+    "id": "beneficiary_not_allowed",
+    "label": "Beneficiary not allowed",
+    "description": "A bank transfer recipient is not permitted.",
+    "group": "beneficiary"
+  },
+  "cancel_transfer": {
+    "id": "cancel_transfer",
+    "label": "Cancel transfer",
+    "description": "The customer asks about cancel transfer.",
+    "group": "transfer"
+  },
+  "card_about_to_expire": {
+    "id": "card_about_to_expire",
+    "label": "Card about to expire",
+    "description": "The customer asks about card about to expire.",
+    "group": "card"
+  },
+  "card_acceptance": {
+    "id": "card_acceptance",
+    "label": "Card acceptance",
+    "description": "The customer asks about card acceptance.",
+    "group": "card"
+  },
+  "card_arrival": {
+    "id": "card_arrival",
+    "label": "Card arrival",
+    "description": "Ask about a physical card that has not arrived.",
+    "group": "card"
+  },
+  "card_delivery_estimate": {
+    "id": "card_delivery_estimate",
+    "label": "Card delivery estimate",
+    "description": "Ask how long card delivery should take.",
+    "group": "card"
+  },
+  "card_linking": {
+    "id": "card_linking",
+    "label": "Card linking",
+    "description": "The customer asks about card linking.",
+    "group": "card"
+  },
+  "card_not_working": {
+    "id": "card_not_working",
+    "label": "Card not working",
+    "description": "The customer asks about card not working.",
+    "group": "card"
+  },
+  "card_payment_fee_charged": {
+    "id": "card_payment_fee_charged",
+    "label": "Card payment fee charged",
+    "description": "The customer asks about card payment fee charged.",
+    "group": "card"
+  },
+  "card_payment_not_recognised": {
+    "id": "card_payment_not_recognised",
+    "label": "Card payment not recognised",
+    "description": "Report an unfamiliar card payment.",
+    "group": "card"
+  },
+  "card_payment_wrong_exchange_rate": {
+    "id": "card_payment_wrong_exchange_rate",
+    "label": "Card payment wrong exchange rate",
+    "description": "The customer asks about card payment wrong exchange rate.",
+    "group": "card"
+  },
+  "card_swallowed": {
+    "id": "card_swallowed",
+    "label": "Card swallowed",
+    "description": "An ATM retained the card.",
+    "group": "card"
+  },
+  "cash_withdrawal_charge": {
+    "id": "cash_withdrawal_charge",
+    "label": "Cash withdrawal charge",
+    "description": "The customer asks about cash withdrawal charge.",
+    "group": "cash_withdrawal"
+  },
+  "cash_withdrawal_not_recognised": {
+    "id": "cash_withdrawal_not_recognised",
+    "label": "Cash withdrawal not recognised",
+    "description": "Report an unfamiliar ATM withdrawal.",
+    "group": "cash_withdrawal"
+  },
+  "change_pin": {
+    "id": "change_pin",
+    "label": "Change pin",
+    "description": "The customer asks about change pin.",
+    "group": "pin"
+  },
+  "compromised_card": {
+    "id": "compromised_card",
+    "label": "Compromised card",
+    "description": "The customer asks about compromised card.",
+    "group": "card"
+  },
+  "contactless_not_working": {
+    "id": "contactless_not_working",
+    "label": "Contactless not working",
+    "description": "The customer asks about contactless not working.",
+    "group": "contactless"
+  },
+  "country_support": {
+    "id": "country_support",
+    "label": "Country support",
+    "description": "Ask which countries are supported.",
+    "group": "country"
+  },
+  "declined_card_payment": {
+    "id": "declined_card_payment",
+    "label": "Declined card payment",
+    "description": "The customer asks about declined card payment.",
+    "group": "card"
+  },
+  "declined_cash_withdrawal": {
+    "id": "declined_cash_withdrawal",
+    "label": "Declined cash withdrawal",
+    "description": "The customer asks about declined cash withdrawal.",
+    "group": "cash_withdrawal"
+  },
+  "declined_transfer": {
+    "id": "declined_transfer",
+    "label": "Declined transfer",
+    "description": "The customer asks about declined transfer.",
+    "group": "transfer"
+  },
+  "direct_debit_payment_not_recognised": {
+    "id": "direct_debit_payment_not_recognised",
+    "label": "Direct debit payment not recognised",
+    "description": "The customer asks about direct debit payment not recognised.",
+    "group": "direct"
+  },
+  "disposable_card_limits": {
+    "id": "disposable_card_limits",
+    "label": "Disposable card limits",
+    "description": "The customer asks about disposable card limits.",
+    "group": "card"
+  },
+  "edit_personal_details": {
+    "id": "edit_personal_details",
+    "label": "Edit personal details",
+    "description": "The customer asks about edit personal details.",
+    "group": "edit"
+  },
+  "exchange_charge": {
+    "id": "exchange_charge",
+    "label": "Exchange charge",
+    "description": "The customer asks about exchange charge.",
+    "group": "exchange"
+  },
+  "exchange_rate": {
+    "id": "exchange_rate",
+    "label": "Exchange rate",
+    "description": "The customer asks about exchange rate.",
+    "group": "exchange"
+  },
+  "exchange_via_app": {
+    "id": "exchange_via_app",
+    "label": "Exchange via app",
+    "description": "The customer asks about exchange via app.",
+    "group": "exchange"
+  },
+  "extra_charge_on_statement": {
+    "id": "extra_charge_on_statement",
+    "label": "Extra charge on statement",
+    "description": "Report an additional unexplained statement charge.",
+    "group": "extra"
+  },
+  "failed_transfer": {
+    "id": "failed_transfer",
+    "label": "Failed transfer",
+    "description": "The customer asks about failed transfer.",
+    "group": "transfer"
+  },
+  "fiat_currency_support": {
+    "id": "fiat_currency_support",
+    "label": "Fiat currency support",
+    "description": "Ask which fiat currencies are supported.",
+    "group": "fiat"
+  },
+  "get_disposable_virtual_card": {
+    "id": "get_disposable_virtual_card",
+    "label": "Get disposable virtual card",
+    "description": "Ask how to obtain a single-use virtual card.",
+    "group": "card"
+  },
+  "get_physical_card": {
+    "id": "get_physical_card",
+    "label": "Get physical card",
+    "description": "Ask how to obtain a physical card.",
+    "group": "card"
+  },
+  "getting_spare_card": {
+    "id": "getting_spare_card",
+    "label": "Getting spare card",
+    "description": "Ask how to obtain an additional card.",
+    "group": "card"
+  },
+  "getting_virtual_card": {
+    "id": "getting_virtual_card",
+    "label": "Getting virtual card",
+    "description": "Ask how to obtain a virtual card.",
+    "group": "card"
+  },
+  "lost_or_stolen_card": {
+    "id": "lost_or_stolen_card",
+    "label": "Lost or stolen card",
+    "description": "The customer asks about lost or stolen card.",
+    "group": "card"
+  },
+  "lost_or_stolen_phone": {
+    "id": "lost_or_stolen_phone",
+    "label": "Lost or stolen phone",
+    "description": "The customer asks about lost or stolen phone.",
+    "group": "lost"
+  },
+  "order_physical_card": {
+    "id": "order_physical_card",
+    "label": "Order physical card",
+    "description": "Request ordering a physical card.",
+    "group": "card"
+  },
+  "passcode_forgotten": {
+    "id": "passcode_forgotten",
+    "label": "Passcode forgotten",
+    "description": "The customer asks about passcode forgotten.",
+    "group": "passcode"
+  },
+  "pending_card_payment": {
+    "id": "pending_card_payment",
+    "label": "Pending card payment",
+    "description": "The customer asks about pending card payment.",
+    "group": "card"
+  },
+  "pending_cash_withdrawal": {
+    "id": "pending_cash_withdrawal",
+    "label": "Pending cash withdrawal",
+    "description": "The customer asks about pending cash withdrawal.",
+    "group": "cash_withdrawal"
+  },
+  "pending_top_up": {
+    "id": "pending_top_up",
+    "label": "Pending top up",
+    "description": "The customer asks about pending top up.",
+    "group": "top_up"
+  },
+  "pending_transfer": {
+    "id": "pending_transfer",
+    "label": "Pending transfer",
+    "description": "The customer asks about pending transfer.",
+    "group": "transfer"
+  },
+  "pin_blocked": {
+    "id": "pin_blocked",
+    "label": "Pin blocked",
+    "description": "A card PIN has been blocked.",
+    "group": "pin"
+  },
+  "receiving_money": {
+    "id": "receiving_money",
+    "label": "Receiving money",
+    "description": "Ask how to receive money.",
+    "group": "receiving"
+  },
+  "request_refund": {
+    "id": "request_refund",
+    "label": "Request refund",
+    "description": "The customer asks about request refund.",
+    "group": "request"
+  },
+  "reverted_card_payment?": {
+    "id": "reverted_card_payment?",
+    "label": "Reverted card payment",
+    "description": "Ask why a card payment was reversed.",
+    "group": "card"
+  },
+  "supported_cards_and_currencies": {
+    "id": "supported_cards_and_currencies",
+    "label": "Supported cards and currencies",
+    "description": "The customer asks about supported cards and currencies.",
+    "group": "card"
+  },
+  "terminate_account": {
+    "id": "terminate_account",
+    "label": "Terminate account",
+    "description": "The customer asks about terminate account.",
+    "group": "terminate"
+  },
+  "top_up_by_bank_transfer_charge": {
+    "id": "top_up_by_bank_transfer_charge",
+    "label": "Top up by bank transfer charge",
+    "description": "The customer asks about top up by bank transfer charge.",
+    "group": "top_up"
+  },
+  "top_up_by_card_charge": {
+    "id": "top_up_by_card_charge",
+    "label": "Top up by card charge",
+    "description": "The customer asks about top up by card charge.",
+    "group": "top_up"
+  },
+  "top_up_by_cash_or_cheque": {
+    "id": "top_up_by_cash_or_cheque",
+    "label": "Top up by cash or cheque",
+    "description": "The customer asks about top up by cash or cheque.",
+    "group": "top_up"
+  },
+  "top_up_failed": {
+    "id": "top_up_failed",
+    "label": "Top up failed",
+    "description": "The customer asks about top up failed.",
+    "group": "top_up"
+  },
+  "top_up_limits": {
+    "id": "top_up_limits",
+    "label": "Top up limits",
+    "description": "The customer asks about top up limits.",
+    "group": "top_up"
+  },
+  "top_up_reverted": {
+    "id": "top_up_reverted",
+    "label": "Top up reverted",
+    "description": "The customer asks about top up reverted.",
+    "group": "top_up"
+  },
+  "topping_up_by_card": {
+    "id": "topping_up_by_card",
+    "label": "Topping up by card",
+    "description": "The customer asks about topping up by card.",
+    "group": "card"
+  },
+  "transaction_charged_twice": {
+    "id": "transaction_charged_twice",
+    "label": "Transaction charged twice",
+    "description": "Report the same card transaction charged more than once.",
+    "group": "transaction"
+  },
+  "transfer_fee_charged": {
+    "id": "transfer_fee_charged",
+    "label": "Transfer fee charged",
+    "description": "The customer asks about transfer fee charged.",
+    "group": "transfer"
+  },
+  "transfer_into_account": {
+    "id": "transfer_into_account",
+    "label": "Transfer into account",
+    "description": "The customer asks about transfer into account.",
+    "group": "transfer"
+  },
+  "transfer_not_received_by_recipient": {
+    "id": "transfer_not_received_by_recipient",
+    "label": "Transfer not received by recipient",
+    "description": "The intended recipient has not received a transfer.",
+    "group": "transfer"
+  },
+  "transfer_timing": {
+    "id": "transfer_timing",
+    "label": "Transfer timing",
+    "description": "The customer asks about transfer timing.",
+    "group": "transfer"
+  },
+  "unable_to_verify_identity": {
+    "id": "unable_to_verify_identity",
+    "label": "Unable to verify identity",
+    "description": "The customer asks about unable to verify identity.",
+    "group": "verify"
+  },
+  "verify_my_identity": {
+    "id": "verify_my_identity",
+    "label": "Verify my identity",
+    "description": "The customer asks about verify my identity.",
+    "group": "verify"
+  },
+  "verify_source_of_funds": {
+    "id": "verify_source_of_funds",
+    "label": "Verify source of funds",
+    "description": "The customer asks about verify source of funds.",
+    "group": "verify"
+  },
+  "verify_top_up": {
+    "id": "verify_top_up",
+    "label": "Verify top up",
+    "description": "The customer asks about verify top up.",
+    "group": "top_up"
+  },
+  "virtual_card_not_working": {
+    "id": "virtual_card_not_working",
+    "label": "Virtual card not working",
+    "description": "The customer asks about virtual card not working.",
+    "group": "card"
+  },
+  "visa_or_mastercard": {
+    "id": "visa_or_mastercard",
+    "label": "Visa or mastercard",
+    "description": "The customer asks about visa or mastercard.",
+    "group": "card"
+  },
+  "why_verify_identity": {
+    "id": "why_verify_identity",
+    "label": "Why verify identity",
+    "description": "The customer asks about why verify identity.",
+    "group": "verify"
+  },
+  "wrong_amount_of_cash_received": {
+    "id": "wrong_amount_of_cash_received",
+    "label": "Wrong amount of cash received",
+    "description": "The customer asks about wrong amount of cash received.",
+    "group": "wrong"
+  },
+  "wrong_exchange_rate_for_cash_withdrawal": {
+    "id": "wrong_exchange_rate_for_cash_withdrawal",
+    "label": "Wrong exchange rate for cash withdrawal",
+    "description": "The customer asks about wrong exchange rate for cash withdrawal.",
+    "group": "cash_withdrawal"
+  }
+}

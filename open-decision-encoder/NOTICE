@@ -1,0 +1,24 @@
+Open Decision Encoder
+Copyright 2026 Shabul Abdul
+
+New project code is made available under Apache License 2.0.
+
+The encoder derives from answerdotai/ModernBERT-base by Answer.AI, LightOn and collaborators.
+Base model: https://huggingface.co/answerdotai/ModernBERT-base (Apache-2.0).
+Paper: Warner et al., Smarter, Better, Faster, Longer: A Modern Bidirectional Encoder for Fast,
+Memory Efficient, and Long Context Finetuning and Inference. https://arxiv.org/abs/2412.13663
+
+Training data sources retain their own licenses:
+BANKING77 — PolyAI, Casanueva et al. (2020), CC-BY-4.0.
+https://github.com/PolyAI-LDN/task-specific-datasets
+MASSIVE — Amazon Science, CC-BY-4.0.
+https://huggingface.co/datasets/AmazonScience/massive
+Typed Decisions — LocalLLaMA/codelion, Apache-2.0.
+https://huggingface.co/datasets/LocalLLaMA/typed-decisions
+
+Transformations include grouped splits, candidate descriptions, candidate sampling,
+option shuffling, abstention augmentation, and normalization of rounded soft targets.
+Original third-party datasets are not bundled in the model release. Revisions and
+transformation hashes are recorded in data/manifests.
+DecisionBench is evaluation-only; its metadata declares license "other". No benchmark
+records are redistributed, relicensed or incorporated into training.
