@@ -126,3 +126,23 @@ def test_synthetic_reproducible_and_grouped():
         splits[split_group(r["group_id"])].append(r)
     assert_no_leakage(splits)
     assert len({r["metadata"]["domain"] for r in a}) == 10
+
+
+def test_hub_checkpoint_loading_is_artifact_only(record, tokenizer, model, tmp_path, monkeypatch):
+    model.save_pretrained(tmp_path / "hub", tokenizer)
+    calls = []
+
+    def fake_download(**kwargs):
+        calls.append(kwargs)
+        return str(tmp_path / "hub")
+
+    monkeypatch.setattr("huggingface_hub.snapshot_download", fake_download)
+    predictor = DecisionPredictor.from_pretrained(
+        "owner/decision-model", revision="immutable-sha", device="cpu"
+    )
+    result = predictor.decide(record["state"], record["question"], record["options"])
+    assert sum(result["probabilities"].values()) == pytest.approx(1.0)
+    assert len(calls) == 1
+    assert calls[0]["revision"] == "immutable-sha"
+    assert "*.py" not in calls[0]["allow_patterns"]
+    assert "head.safetensors" in calls[0]["allow_patterns"]

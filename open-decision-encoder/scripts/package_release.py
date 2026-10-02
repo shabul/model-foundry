@@ -21,6 +21,17 @@ def main():
         raise ValueError("Encoder changed after selection")
     if not Path("reports/evaluation.json").exists():
         raise ValueError("Complete final evaluation before packaging")
+    evaluation = json.loads(Path("reports/evaluation.json").read_text())
+    calibration = json.loads((source / "temperature.json").read_text())
+    if Path(evaluation["checkpoint"]).resolve() != source.resolve():
+        raise ValueError("Evaluation belongs to a different checkpoint")
+    if evaluation["temperature"] != calibration["temperature"] or not calibration.get("data_sha256"):
+        raise ValueError("Calibrated evaluation does not match release temperature")
+    if not evaluation["n"] or not Path("MODEL_CARD.md").exists():
+        raise ValueError("Measured evaluation and model card are required")
+    baseline = json.loads(Path("checkpoints/frozen/run.json").read_text())["baseline"]["nll"]
+    if selection["validation_nll"] >= baseline * 0.95:
+        raise ValueError("Selected checkpoint did not meaningfully improve validation NLL")
     target = Path(a.output)
     if target.exists():
         raise ValueError(f"Release directory already exists: {target}")

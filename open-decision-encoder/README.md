@@ -81,3 +81,5 @@ The default overflow behavior raises an error. Explicit `overflow="truncate_stat
 Candidate order augmentation does not make the architecture mathematically invariant. Probabilities depend on the supplied candidate set. One temperature cannot guarantee calibration under domain shift. Synthetic rule families have limited diversity. Runtime-defined options alone do not prove generalization to unseen tasks. Long external benchmark inputs may exceed the supported context; report those exclusions and coverage rather than silently dropping options.
 
 Weights, tokenizer, decision head, temperature and decision config are all needed for inference. Local release packaging should include this code and provenance. No weights are represented as published until an actual upload is verified.
+
+After publication, `DecisionPredictor.from_pretrained("owner/repository", revision="commit-sha")` downloads only the encoder, tokenizer, head and configuration artifacts. Install this package first; no remote Python code is executed by the loader. Pin the Hub revision for reproducible inference.

@@ -10,7 +10,7 @@ from transformers import AutoTokenizer
 from decision_encoder.collator import DecisionCollator
 from decision_encoder.data.schema import ABSTAIN_ID, ABSTAIN_OPTION
 from decision_encoder.metrics import stable_argmax
-from decision_encoder.modeling import DecisionEncoder
+from decision_encoder.modeling import DecisionEncoder, resolve_checkpoint_path
 from decision_encoder.runtime import device_for
 
 
@@ -21,7 +21,8 @@ class DecisionPredictor:
         self.collator = DecisionCollator(tokenizer, max_length=max_length, overflow=overflow)
 
     @classmethod
-    def from_pretrained(cls, path, **kwargs):
+    def from_pretrained(cls, path, revision=None, **kwargs):
+        path = resolve_checkpoint_path(path, revision)
         return cls(
             DecisionEncoder.from_pretrained(path),
             AutoTokenizer.from_pretrained(Path(path) / "tokenizer"),

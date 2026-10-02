@@ -9,6 +9,29 @@ from torch import nn
 from transformers import AutoConfig, AutoModel
 
 
+def resolve_checkpoint_path(path, revision=None):
+    local = Path(path)
+    if local.is_dir():
+        return local
+    if local.is_absolute() or str(path).startswith("."):
+        raise FileNotFoundError(path)
+    from huggingface_hub import snapshot_download
+
+    return Path(
+        snapshot_download(
+            repo_id=str(path),
+            revision=revision,
+            allow_patterns=[
+                "encoder/*",
+                "tokenizer/*",
+                "head.safetensors",
+                "decision_config.json",
+                "temperature.json",
+            ],
+        )
+    )
+
+
 class DecisionEncoder(nn.Module):
     def __init__(self, encoder, head_hidden=256, dropout=0.1):
         super().__init__()
@@ -105,8 +128,8 @@ class DecisionEncoder(nn.Module):
             tokenizer.save_pretrained(path / "tokenizer")
 
     @classmethod
-    def from_pretrained(cls, path):
-        path = Path(path)
+    def from_pretrained(cls, path, revision=None):
+        path = resolve_checkpoint_path(path, revision)
         cfg = json.loads((path / "decision_config.json").read_text())
         if cfg["schema_version"] != 1:
             raise ValueError("Unsupported checkpoint schema")
