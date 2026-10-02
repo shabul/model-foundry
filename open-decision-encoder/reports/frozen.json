@@ -1,0 +1,78 @@
+{
+  "config": {
+    "stage": "frozen",
+    "model": "answerdotai/ModernBERT-base",
+    "model_revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+    "mode": "frozen",
+    "seed": 42,
+    "train_data": "data/processed/train.jsonl",
+    "validation_data": "data/processed/validation.jsonl",
+    "output": "checkpoints/frozen",
+    "max_length": 512,
+    "overflow": "truncate_state",
+    "batch_size": 16,
+    "gradient_accumulation": 1,
+    "head_lr": 0.001,
+    "encoder_lr": 1e-05,
+    "epochs": 1,
+    "bf16": true
+  },
+  "provenance": {
+    "git_commit": "ca3127205638ef6031e59bdca72819f437d27362",
+    "git_dirty": true,
+    "source_sha256": "2e800ca674eaeb411e796377da9dae320443ee19be80326da5fd458789234b5a",
+    "torch": "2.14.1"
+  },
+  "train_sha256": "2e5e6f91ea3e0029656e4a680029e53d04ce63e2b550c8456ef961ae36d5ce41",
+  "validation_sha256": "c23c29afcf3d14307e76a55e7095d869db7016537748f19e66ba73bcbd1a1ea7",
+  "manifest_sha256": "eee5975b5cfb66646c9f2f76eb9fb6ea171942024c6d5b3afc944f7660f24e83",
+  "train_n": 64908,
+  "validation_n": 4174,
+  "device": "mps",
+  "trainable_parameters": 198657,
+  "total_parameters": 149212929,
+  "baseline": {
+    "n": 4174,
+    "accuracy": 0.21490177287973167,
+    "nll": 1.5053013132373119,
+    "brier": 0.6964393980151458,
+    "ece": 0.031811182744618985,
+    "mean_entropy": 1.504813625525239,
+    "soft_expected_accuracy": 0.21162559664762753,
+    "mean_candidate_count": 4.832534738859607,
+    "abstain_precision": 0.0,
+    "abstain_recall": 0.0,
+    "abstain_f1": 0.0,
+    "abstain_support": 0,
+    "abstain_predictions": 0,
+    "risk_coverage_definition": "Confidence-ranked coverage of all decisions, including abstention as an outcome",
+    "truncated_examples": 8
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.3787975959374663,
+      "validation": {
+        "n": 4174,
+        "accuracy": 0.37302347867752755,
+        "nll": 1.3862442497745293,
+        "brier": 0.6406345276081528,
+        "ece": 0.06870825365578437,
+        "mean_entropy": 1.2827811272295007,
+        "soft_expected_accuracy": 0.37089117479030165,
+        "mean_candidate_count": 4.832534738859607,
+        "abstain_precision": 0.0,
+        "abstain_recall": 0.0,
+        "abstain_f1": 0.0,
+        "abstain_support": 0,
+        "abstain_predictions": 0,
+        "risk_coverage_definition": "Confidence-ranked coverage of all decisions, including abstention as an outcome",
+        "truncated_examples": 8
+      },
+      "seconds": 1030.9423757500044,
+      "train_truncated": 118
+    }
+  ],
+  "best_validation_nll": 1.3862442497745293,
+  "seconds": 1031.2353725840076
+}

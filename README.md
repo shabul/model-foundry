@@ -39,6 +39,7 @@
 | 3 | [devils-advocate](foundry/devils-advocate/) | Logical counter-arguer | `Gemma-2-9B` | SFT | [↗](https://huggingface.co/shabul/gemma-2-9b-devils-advocate) | — | — |
 | 4 | [sherlock-debugger](foundry/sherlock-debugger/) | Deductive bug detective | `Gemma-2-9B` | SFT | [↗](https://huggingface.co/shabul/gemma-2-9b-sherlock-debugger) | — | — |
 | 5 | [desi-finance-advisor](foundry/desi-finance-advisor/) | Indian finance bhai | `Mistral-7B-Instruct-v0.2` | SFT → RSFT | [↗](https://huggingface.co/shabul/mistral-7b-desi-finance-advisor) | `0.269` | **66.7%** vs SFT |
+| 6 | [open-decision-encoder](open-decision-encoder/) | Runtime candidate decisions | `ModernBERT-base` | PyTorch/MPS staged tuning | Training in progress | — | — |
 
 ---
 
@@ -142,12 +143,27 @@ The most technically complex forge project. Fine-tunes Mistral-7B into **Desi Fi
 
 ---
 
+## Open Decision Encoder
+
+The sixth project explores probabilistic decisions over options supplied at runtime. It uses a bidirectional ModernBERT-base encoder with a shared candidate-scoring head, explicit abstention, soft targets, temperature calibration, and candidate-order stress tests.
+
+The implementation, deterministic data recipe, offline tests, and measured MPS feasibility checks are complete. Larger training and final evaluation are in progress; no release-quality result is claimed yet.
+
+- [Implementation contract](open-decision-encoder/IMPLEMENTATION.md)
+- [Package setup and inference API](open-decision-encoder/README.md)
+- [Repository review and lessons](open-decision-encoder/reports/repository_review.md)
+- [Hardware measurements](open-decision-encoder/reports/hardware.md)
+
+---
+
 ## Structure
 
 ```
 model-foundry/
 │
-├── shared/                         # Shared utilities across all projects
+├── open-decision-encoder/          # Probabilistic encoder research (PyTorch/MPS)
+│
+├── shared/                         # Shared utilities across MLX projects
 │   ├── data_utils.py               # JSONL writing, train/val split
 │   ├── hub_utils.py                # LoRA fusion + HF Hub upload
 │   └── eval.py                     # Local inference & evaluation
@@ -261,7 +277,7 @@ python foundry/sherlock-debugger/push_to_hub.py --repo shabul/gemma-2-9b-sherloc
 └─────────────────────────────────────────┘
 ```
 
-All fine-tuning runs locally on Apple Silicon via [mlx-lm](https://github.com/ml-explore/mlx-lm). 7B models use 4-bit NF4 quantisation to fit within 24 GB; peak training memory for Mistral-7B was 7.2 GB. No cloud GPU cost was incurred across any forge project.
+The first five projects train locally on Apple Silicon via [mlx-lm](https://github.com/ml-explore/mlx-lm). Open Decision Encoder uses PyTorch/MPS on the same 24 GB Mac. 7B models use 4-bit NF4 quantisation to fit within 24 GB; peak training memory for Mistral-7B was 7.2 GB. No cloud GPU cost was incurred across any forge project.
 
 ---
 
