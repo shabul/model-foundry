@@ -95,7 +95,8 @@ def main():
         "- Repeated synthetic renderings have fewer independent causal-state groups; row count is not independent sample count.",
         "- Context truncation can remove decisive evidence. Default inference refuses overflow; the training/evaluation truncation policy is disclosed.",
         "- Sequential stages are not controlled equal-compute ablations. Confidence intervals should be clustered by source state for correlated decisions.",
-        "- Local artifacts are not a verified Hugging Face publication. No upload is performed automatically.",
+        "- Publication status is recorded separately in publication.json; an experiment report alone does not establish a successful upload.",
+        "- Removing the annotated gold intent assumes all remaining labels are wrong. Semantically overlapping intent labels can violate that assumption, so synthetic abstention labels are imperfect.",
     ]
     if external:
         lines += [

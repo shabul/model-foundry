@@ -21,9 +21,13 @@ def transform(row):
     candidates = json.loads(row["candidates_json"])
     options = []
     for c in candidates:
-        option = {"id": str(c["id"]), "label": str(c["label"]), "description": str(c["description"])}
-        if c.get("value") is not None:
-            option["value"] = float(c["value"])
+        option = {
+            "id": str(c["id"]),
+            "label": str(c["label"]),
+            "description": str(c.get("description") or c["label"]),
+        }
+        if c.get("ordinal_value") is not None:
+            option["value"] = float(c["ordinal_value"])
         options.append(option)
     r = {
         "id": row["row_id"],

@@ -78,7 +78,7 @@ The default overflow behavior raises an error. Explicit `overflow="truncate_stat
 
 ## Limits
 
-Candidate order augmentation does not make the architecture mathematically invariant. Probabilities depend on the supplied candidate set. One temperature cannot guarantee calibration under domain shift. Synthetic rule families have limited diversity. Runtime-defined options alone do not prove generalization to unseen tasks. Long external benchmark inputs may exceed the supported context; report those exclusions and coverage rather than silently dropping options.
+Candidate order augmentation does not make the architecture mathematically invariant. Probabilities depend on the supplied candidate set. One temperature cannot guarantee calibration under domain shift. Synthetic rule families have limited diversity. Gold-label-removal abstention assumes the remaining labels are wrong; overlapping intent meanings can violate that assumption. Runtime-defined options alone do not prove generalization to unseen tasks. Long external benchmark inputs may exceed the supported context; report those exclusions and coverage rather than silently dropping options.
 
 Weights, tokenizer, decision head, temperature and decision config are all needed for inference. Local release packaging should include this code and provenance. No weights are represented as published until an actual upload is verified.
 
